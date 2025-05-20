@@ -1,0 +1,15 @@
+- hosts: app_servers
+  become: yes
+  tasks:
+    - name: Pull Docker image
+      docker_image:
+        name: nabilbelz/absence-app
+        source: pull
+
+    - name: Run Docker container
+      docker_container:
+        name: absence-app
+        image: nabilbelz/absence-app
+        state: started
+        ports:
+          - "8080:8080"
