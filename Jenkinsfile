@@ -57,8 +57,11 @@ pipeline {
     }
 
     post {
-        always {
+    always {
+        steps {
             sh 'rm -f /tmp/id_rsa'
         }
     }
+}
+
 }
