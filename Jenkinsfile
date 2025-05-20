@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SSH_KEY = credentials('SSH-key-Jenkins')        // Clé privée pour Ansible
-        DOCKERHUB_USER = credentials('nabilbelz')  // ID Jenkins pour DockerHub
+        DOCKERHUB_USER = credentials('nabilbelz')       // ID Jenkins pour DockerHub
         IMAGE_NAME = 'nabal0/absence-app'
         INVENTORY_PATH = 'ansible/inventory'
         PLAYBOOK_PATH = 'ansible/playbook.yaml'
@@ -57,11 +57,8 @@ pipeline {
     }
 
     post {
-    always {
-        node {
+        always {
             sh 'rm -f /tmp/id_rsa'
         }
     }
-}
-
 }
